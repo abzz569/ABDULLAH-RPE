@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    environment {
+        DIRECTORY_PATH = "/Users/abdul/Desktop/Subjects/Deakin/CyberSecurity/2023/T1/SIT223"
+        TESTING_ENVIRONMENT = "The_Testing_Enviroment_Is_For_Task_Five" 
+        PRODUCTION_ENVIRONMENT = "Abdullah_Mohamed_Azad" 
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "This will fetch the source code from the directory path specified by the: $DIRECTORY_PATH"
+                echo "This will compile the code and generate any necessary artifacts"
+                
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Now it is Running the unit tests"
+                echo "Now it is Running the integration tests"
+                
+            }
+        }
+        stage('Code Quality Check') {
+            steps {
+                echo "Hey, this is the Checking for the code  quality"
+                
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Now it is deploying the application to a testing environment specified by the environment variable"
+                
+            }
+        }
+        stage('Approval') {
+            steps {
+                
+                sleep 10 
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo "Deploying the code to $PRODUCTION_ENVIRONMENT environment"
+                
+            }
+        }
+    }
+}
