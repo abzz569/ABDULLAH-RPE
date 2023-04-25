@@ -20,8 +20,8 @@ pipeline {
                 always {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
-                         body: "Test log attached!",
-                         attachLog: true, compressLog: true
+                         body: "The master build is happy.\n\nConsole: ${env.BUILD_URL}.\n\n",
+            attachLog: true
                 }
             }
         }
