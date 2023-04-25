@@ -18,10 +18,10 @@ pipeline {
             }
             post {
                 always emailext{
-    to: "abdullahazad483@gmail.com",
-    replyTo: 'abdullahazad483@gmail.com',
-    subject: '$DEFAULT_SUBJECT',
-    body: getEmailBody()
+                            to: "abdullahazad483@gmail.com",
+                                         replyTo: 'abdullahazad483@gmail.com',
+                                     subject: '$DEFAULT_SUBJECT',
+                                         body: getEmailBody()
                 }
             }
         }
