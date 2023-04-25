@@ -1,68 +1,71 @@
-pipeline {
+pipeline{
     agent any
-    
-    stages {
+    stages{
         stage('Build') {
             steps {
                 echo 'Building the code using Maven'
-                // Command to run Maven build tool
             }
         }
-        
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit tests using JUnit'
-                // Command to run JUnit test automation tool for unit tests
-                echo 'Running integration tests using Selenium'
-                // Command to run Selenium test automation tool for integration tests
+                echo 'Running unit and integration tests using JUnit and Selenium'
             }
-            post {
-                always {
-                    emailext attachLog: true, body: "Congrats!", compressLog: true, replyTo: 'abdullahazad483@gmail.com',
-       subject: "Build Notification: ${currentBuild.result}", to: 'abdullahazad483@gmail.com'
+            post{
+                always{
+                    emailext (
+                        subject: 'Unit and Integration Tests Status',
+                        to: 'abdullahazad483@gmail.com',
+                        body: "${currentBuild.result}: Job ",
+                        attachLog: true
+                    )
                 }
             }
         }
-        
         stage('Code Analysis') {
             steps {
-                echo 'Analyzing code using Jenkins plugin for Checkstyle'
-                // Command to integrate Checkstyle plugin with Jenkins for code analysis
+                echo 'Analyzing the code using Jenkins and SonarQube'
             }
         }
-        
         stage('Security Scan') {
             steps {
-                echo 'Scanning code for vulnerabilities using OWASP ZAP'
-                // Command to run OWASP ZAP tool for security scan
+                echo 'Performing a security scan on the code using OWASP ZAP'
             }
-            post {
-                always {
-                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'abdullahazad483@gmail.com',
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'abdullahazad483@gmail.com'
+            post{
+                always{
+                    emailext (
+                        subject: 'Security Scan Status',
+                        to: 'abdullahazad483@gmail.com',
+                        body: "${currentBuild.result}: Job ",
+                        attachLog: true,
+                    )
                 }
             }
         }
-        
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying application to AWS EC2 instance for staging'
-                // Command to deploy to AWS EC2 instance for staging
+                echo 'Deploying the application to an AWS EC2 instance'
             }
         }
-        
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging using Selenium'
-                // Command to run Selenium test automation tool for integration tests on staging
+                echo 'Running integration tests on the staging environment using Selenium'
+            }
+            post{
+                always{
+                    emailext (
+                        subject: 'Integration Tests on Staging Status',
+                        to: 'abdullahazad483@gmail.com',
+                        body: "${currentBuild.result}: Job ",
+                        attachLog: true,
+                    )
+                }
             }
         }
-        
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying application to AWS EC2 instance for production'
-                // Command to deploy to AWS EC2 instance for production
+                echo 'Deploying the application to an AWS EC2 instance'
             }
         }
     }
+
 }
