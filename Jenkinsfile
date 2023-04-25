@@ -18,8 +18,8 @@ pipeline {
             }
             post {
                 always emailext{
-    to: "[REDACTED]@[REDACTED].com",
-    replyTo: 'no-reply@[REDACTED].com',
+    to: "abdullahazad483@gmail.com",
+    replyTo: 'abdullahazad483@gmail.com',
     subject: '$DEFAULT_SUBJECT',
     body: getEmailBody()
                 }
@@ -40,8 +40,8 @@ pipeline {
             }
             post {
                 always {
-                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'Abdullahazad483@gmail.com',
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'Abdullahazad483@gmail.com'
+                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'abdullahazad483@gmail.com',
+       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'abdullahazad483@gmail.com'
                 }
             }
         }
