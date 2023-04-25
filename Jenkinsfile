@@ -20,8 +20,8 @@ pipeline {
                 always {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
-                         body: "Test log attached!",
-                         attachments: '**/target/surefire-reports/*.txt'
+                         body: "Test log attached!"
+                         
                 }
             }
         }
@@ -42,8 +42,8 @@ pipeline {
                 always {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
-                         body: "Test log attached!",
-                                                  attachments: '**/target/dependency-check-report.xml'
+                         body: "Test log attached!"
+                                                 
 
                 }
             }
