@@ -17,11 +17,11 @@ pipeline {
                 // Command to run Selenium test automation tool for integration tests
             }
             post {
-                always {
+                success {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
-                         body: "Test log attached!"
-                         
+                         body: "Test log attached!",
+                         attachLog: true
                 }
             }
         }
@@ -42,9 +42,8 @@ pipeline {
                 always {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
-                         body: "Test log attached!"
-                                                 
-
+                         body: "Test log attached!",
+                         attachLog: true
                 }
             }
         }
