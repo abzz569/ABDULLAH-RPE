@@ -17,12 +17,10 @@ pipeline {
                 // Command to run Selenium test automation tool for integration tests
             }
             post {
-                success {
-                    mail to: "Abdullahazad483@gmail.com",
-                         subject: "Test Results",
-                         body: "Test log attached!",
-                         
-                
+                always {
+                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'Abdullahazad483@gmail.com',
+       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'Abdullahazad483@gmail.com'
+                }
             }
         }
         
@@ -40,8 +38,8 @@ pipeline {
             }
             post {
                 always {
-                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, 
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'abdullahazad483@gmail.com'
+                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'Abdullahazad483@gmail.com',
+       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'Abdullahazad483@gmail.com'
                 }
             }
         }
@@ -68,5 +66,3 @@ pipeline {
         }
     }
 }
-
-
