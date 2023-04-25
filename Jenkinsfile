@@ -17,9 +17,11 @@ pipeline {
                 // Command to run Selenium test automation tool for integration tests
             }
             post {
-                always {
-                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'Abdullahazad483@gmail.com',
-       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'Abdullahazad483@gmail.com'
+                always emailext{
+    to: "[REDACTED]@[REDACTED].com",
+    replyTo: 'no-reply@[REDACTED].com',
+    subject: '$DEFAULT_SUBJECT',
+    body: getEmailBody()
                 }
             }
         }
