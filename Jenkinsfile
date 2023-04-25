@@ -21,7 +21,7 @@ pipeline {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
                          body: "Test log attached!",
-                         attachLog: true
+                         attachments: '**/target/surefire-reports/*.txt'
                 }
             }
         }
@@ -43,7 +43,8 @@ pipeline {
                     mail to: "Abdullahazad483@gmail.com",
                          subject: "Test Results",
                          body: "Test log attached!",
-                         attachLog: true
+                                                  attachments: '**/target/dependency-check-report.xml'
+
                 }
             }
         }
