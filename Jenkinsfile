@@ -22,7 +22,7 @@ pipeline {
                          subject: "Test Results",
                          body: "Test log attached!",
                          
-                }
+                
             }
         }
         
