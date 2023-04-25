@@ -18,11 +18,8 @@ pipeline {
             }
             post {
                 always {
-                    mail to: "Abdullahazad483@gmail.com",
-                         subject: "Test Results",
-                         body: "The master build is happy.\n\nConsole: ${env.BUILD_URL}.\n\n",
-                        attachLog: true,
-                        compressLog:true
+                    emailext attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", compressLog: true, replyTo: 'abdullahazad483@gmail.com',
+       subject: "Build Notification: ${JOB_NAME}-Build# ${BUILD_NUMBER} ${currentBuild.result}", to: 'abdullahazad483@gmail.com'
                 }
             }
         }
