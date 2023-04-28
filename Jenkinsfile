@@ -14,7 +14,7 @@ pipeline{
                 always{
                     emailext (
                         subject: 'Unit and Integration Tests Status',
-                        to: 'abdullah569@icloud.com',
+                        to: 'abdullahazad483@gmail.com',
                         body: "${currentBuild.result}: Job ",
                         attachLog: true
                     )
