@@ -61,9 +61,6 @@ pipeline{
                 }
             }
         }
-        triggers {
-        pollSCM('* * * * *')
-    }
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying the application to an AWS EC2 instance'
