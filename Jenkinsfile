@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage('Builds') {
+        stage('Build') {
             steps {
                 echo 'Building the code using Maven'
             }
